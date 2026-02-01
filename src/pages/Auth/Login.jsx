@@ -79,7 +79,7 @@ function Login() {
       <div className="hero-section">
         <div className="hero-content">
           <div className="hero-logo">
-            <img src="/logo-white.png" alt="JumpCoin" className="hero-logo-image" />
+            <img src="/logo.png" alt="JumpCoin" className="hero-logo-image" />
           </div>
           <h1 className="hero-title gradient-text">JumpCoin</h1>
           <p className="hero-subtitle">Jump to Earn. The Future of Move-to-Earn.</p>

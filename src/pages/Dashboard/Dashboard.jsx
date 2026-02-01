@@ -31,7 +31,7 @@ function Dashboard() {
       <header className="dashboard-header">
         <div className="dashboard-header-content">
           <div className="dashboard-logo-container">
-            <img src="/logo-white.png" alt="JumpCoin" className="dashboard-logo-image" />
+            <img src="/logo.png" alt="JumpCoin" className="dashboard-logo-image" />
             <h1 className="dashboard-logo">JumpCoin</h1>
           </div>
           <div className="dashboard-header-right">
