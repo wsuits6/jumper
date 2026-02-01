@@ -1,0 +1,214 @@
+.jump-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.jump-panel-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.jump-panel-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.jump-panel-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.jump-panel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+}
+
+.jump-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.jump-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.jump-stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--font-weight-medium);
+}
+
+.jump-stat-value {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.jump-combo {
+  animation: comboAppear 0.3s ease-out;
+}
+
+.jump-combo-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warning);
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.jump-button-container {
+  position: relative;
+  margin: var(--spacing-2xl) 0;
+}
+
+.jump-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.jump-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.jump-button:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.jump-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(99, 102, 241, 0.6);
+}
+
+.jump-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.jump-button.jumping {
+  animation: jumpAnimation 0.3s ease-out;
+}
+
+.jump-button-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.jump-button-text {
+  font-size: var(--font-size-xl);
+  letter-spacing: 0.1em;
+}
+
+.jump-reward {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-success);
+  animation: rewardFloat 0.6s ease-out;
+  pointer-events: none;
+}
+
+.jump-info {
+  text-align: center;
+}
+
+.jump-info-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.jump-info-text strong {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Animations */
+@keyframes jumpAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9) translateY(-10px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rewardFloat {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50px);
+  }
+}
+
+@keyframes comboAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jump-button {
+    width: 180px;
+    height: 180px;
+    font-size: var(--font-size-xl);
+  }
+
+  .jump-button-icon {
+    font-size: 2.5rem;
+  }
+
+  .jump-button-text {
+    font-size: var(--font-size-lg);
+  }
+}
