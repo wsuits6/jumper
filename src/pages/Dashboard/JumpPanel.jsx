@@ -9,12 +9,22 @@ function JumpPanel() {
   const [isJumping, setIsJumping] = useState(false)
   const [showReward, setShowReward] = useState(false)
   const [combo, setCombo] = useState(0)
+  const [particles, setParticles] = useState([])
 
   useEffect(() => {
     // Load initial jump count
     const count = getJumpCount()
     setJumpCount(count)
   }, [])
+
+  const createParticles = () => {
+    const newParticles = Array.from({ length: 8 }, (_, i) => ({
+      id: Date.now() + i,
+      angle: (i * 45) * (Math.PI / 180),
+    }))
+    setParticles(newParticles)
+    setTimeout(() => setParticles([]), 600)
+  }
 
   const handleJump = () => {
     if (isJumping) return
@@ -28,8 +38,9 @@ function JumpPanel() {
     // Increment combo
     setCombo(prev => prev + 1)
     
-    // Show reward animation
+    // Show reward animation and particles
     setShowReward(true)
+    createParticles()
     setTimeout(() => setShowReward(false), 600)
     
     // Reset jumping state
@@ -59,29 +70,73 @@ function JumpPanel() {
           )}
         </div>
 
-        <div className="jump-button-container">
-          <Button
-            variant="primary"
-            size="lg"
-            className={`jump-button ${isJumping ? 'jumping' : ''}`}
-            onClick={handleJump}
-            disabled={isJumping}
-          >
-            <span className="jump-button-icon">🚀</span>
-            <span className="jump-button-text">JUMP!</span>
-          </Button>
+        <div className="jump-button-wrapper">
+          <div className="jump-button-container">
+            <Button
+              variant="primary"
+              size="lg"
+              className={`jump-button ${isJumping ? 'jumping' : ''}`}
+              onClick={handleJump}
+              disabled={isJumping}
+            >
+              <span className="jump-button-icon">🚀</span>
+              <span className="jump-button-text">JUMP!</span>
+            </Button>
 
-          {showReward && (
-            <div className="jump-reward">
-              +1 💰
-            </div>
-          )}
+            {/* Reward popup */}
+            {showReward && (
+              <div className="jump-reward">
+                +1 💰
+              </div>
+            )}
+
+            {/* Particle effects */}
+            {particles.map((particle) => (
+              <div
+                key={particle.id}
+                className="jump-particle"
+                style={{
+                  '--angle': `${particle.angle}rad`,
+                }}
+              />
+            ))}
+
+            {/* Ripple effect */}
+            {isJumping && (
+              <div className="jump-ripple"></div>
+            )}
+          </div>
         </div>
 
         <div className="jump-info">
           <p className="jump-info-text">
             Each jump earns you <strong>1 JumpCoin</strong>
           </p>
+        </div>
+
+        {/* Stats bar */}
+        <div className="jump-stats-bar">
+          <div className="jump-stats-item">
+            <span className="jump-stats-icon">⚡</span>
+            <div className="jump-stats-details">
+              <span className="jump-stats-label">Energy</span>
+              <span className="jump-stats-value">100%</span>
+            </div>
+          </div>
+          <div className="jump-stats-item">
+            <span className="jump-stats-icon">🎯</span>
+            <div className="jump-stats-details">
+              <span className="jump-stats-label">Accuracy</span>
+              <span className="jump-stats-value">Perfect</span>
+            </div>
+          </div>
+          <div className="jump-stats-item">
+            <span className="jump-stats-icon">⭐</span>
+            <div className="jump-stats-details">
+              <span className="jump-stats-label">Streak</span>
+              <span className="jump-stats-value">{combo}</span>
+            </div>
+          </div>
         </div>
       </div>
     </Card>
