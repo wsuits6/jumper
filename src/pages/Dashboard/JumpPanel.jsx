@@ -78,4 +78,14 @@ function JumpPanel() {
           )}
         </div>
 
-        <div className="jump-info"></div>
+        <div className="jump-info">
+          <p className="jump-info-text">
+            Each jump earns you <strong>1 JumpCoin</strong>
+          </p>
+        </div>
+      </div>
+    </Card>
+  )
+}
+
+export default JumpPanel
