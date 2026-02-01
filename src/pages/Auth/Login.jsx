@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import Card from '../../components/ui/Card.jsx'
 import Input from '../../components/ui/Input.jsx'
 import Button from '../../components/ui/Button.jsx'
+import ThemeToggle from '../../components/ui/ThemeToggle.jsx'
 import './Auth.css'
 
 function Login() {
@@ -70,11 +71,40 @@ function Login() {
 
   return (
     <div className="auth-container">
+      <div className="auth-theme-toggle">
+        <ThemeToggle />
+      </div>
+
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-content">
+          <div className="hero-logo">
+            <img src="/logo-white.png" alt="JumpCoin" className="hero-logo-image" />
+          </div>
+          <h1 className="hero-title gradient-text">JumpCoin</h1>
+          <p className="hero-subtitle">Jump to Earn. The Future of Move-to-Earn.</p>
+          <div className="hero-features">
+            <div className="hero-feature">
+              <span className="hero-feature-icon">🚀</span>
+              <span className="hero-feature-text">Instant Rewards</span>
+            </div>
+            <div className="hero-feature">
+              <span className="hero-feature-icon">💰</span>
+              <span className="hero-feature-text">Real Tokens</span>
+            </div>
+            <div className="hero-feature">
+              <span className="hero-feature-icon">🏆</span>
+              <span className="hero-feature-text">Compete & Win</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Login Form */}
       <div className="auth-content">
         <div className="auth-header">
-          <h1 className="auth-logo">🚀 JumpCoin</h1>
           <h2 className="auth-title">Welcome Back</h2>
-          <p className="auth-description">Sign in to start earning tokens</p>
+          <p className="auth-description">Sign in to continue jumping and earning</p>
         </div>
 
         <Card padding="lg" className="auth-card">

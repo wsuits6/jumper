@@ -1,29 +1,144 @@
 .auth-container {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--color-background);
+  position: relative;
+}
+
+.auth-theme-toggle {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 1000;
+}
+
+/* Hero Section */
+.hero-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-lg);
-  background: linear-gradient(135deg, var(--color-background) 0%, #1a1f3a 100%);
+  padding: var(--spacing-2xl);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: heroPattern 20s linear infinite;
+}
+
+@keyframes heroPattern {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero-logo {
+  margin-bottom: var(--spacing-xl);
+  animation: heroLogoFloat 3s ease-in-out infinite;
+}
+
+@keyframes heroLogoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-logo-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.hero-title {
+  font-size: var(--font-size-6xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-md);
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--spacing-3xl);
+  font-weight: var(--font-weight-medium);
+}
+
+.hero-features {
+  display: flex;
+  gap: var(--spacing-2xl);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--transition-base);
+}
+
+.hero-feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-feature-icon {
+  font-size: var(--font-size-3xl);
+}
+
+.hero-feature-text {
+  font-size: var(--font-size-sm);
+  color: white;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Auth Content */
 .auth-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .auth-header {
   text-align: center;
   margin-bottom: var(--spacing-2xl);
-}
-
-.auth-logo {
-  font-size: var(--font-size-4xl);
-  margin-bottom: var(--spacing-md);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  width: 100%;
 }
 
 .auth-title {
@@ -40,7 +155,9 @@
 }
 
 .auth-card {
+  width: 100%;
   backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
 }
 
 .auth-form {
@@ -71,4 +188,42 @@
 .auth-link:hover {
   color: var(--color-primary-light);
   text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    min-height: 40vh;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-logo-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-features {
+    gap: var(--spacing-lg);
+  }
+
+  .hero-feature {
+    padding: var(--spacing-md);
+  }
+
+  .auth-content {
+    padding: var(--spacing-lg);
+  }
 }
