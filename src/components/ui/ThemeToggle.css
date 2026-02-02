@@ -1,17 +1,33 @@
 .theme-toggle {
   position: relative;
-  width: 60px;
-  height: 32px;
-  background: none;
+  width: 64px;
+  height: 34px;
+  background: var(--color-surface);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-full);
   cursor: pointer;
   padding: 0;
   transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  border-radius: inherit;
 }
 
 .theme-toggle:hover {
   border-color: var(--color-primary);
+  box-shadow: 0 0 20px var(--color-primary-glow);
+}
+
+.theme-toggle:hover::before {
+  opacity: 0.1;
 }
 
 .theme-toggle-track {
@@ -23,29 +39,100 @@
 
 .theme-toggle-thumb {
   position: absolute;
-  top: 2px;
-  width: 24px;
-  height: 24px;
-  background-color: var(--color-primary);
+  top: 3px;
+  width: 26px;
+  height: 26px;
+  background: var(--gradient-primary);
   border-radius: 50%;
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-bounce);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 0 10px var(--color-primary-glow);
+  z-index: 2;
+}
+
+.theme-toggle-thumb::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .theme-toggle-thumb.dark {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 .theme-toggle-thumb.light {
-  transform: translateX(28px);
+  transform: translateX(31px);
 }
 
 .theme-toggle-logo {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
   filter: brightness(0) invert(1);
+  animation: logoSpin 0.5s ease-out;
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Icons alternative (if using icons instead of logo) */
+.theme-toggle-icon {
+  font-size: var(--font-size-base);
+  color: white;
+}
+
+/* Active state animation */
+.theme-toggle:active .theme-toggle-thumb {
+  transform: scale(0.9) translateX(5px);
+}
+
+.theme-toggle:active .theme-toggle-thumb.light {
+  transform: scale(0.9) translateX(31px);
+}
+
+/* Glow effect on toggle */
+.theme-toggle-thumb:hover {
+  box-shadow: var(--shadow-md), 0 0 20px var(--color-primary-glow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 56px;
+    height: 30px;
+  }
+
+  .theme-toggle-thumb {
+    width: 24px;
+    height: 24px;
+    top: 2px;
+  }
+
+  .theme-toggle-thumb.dark {
+    transform: translateX(3px);
+  }
+
+  .theme-toggle-thumb.light {
+    transform: translateX(25px);
+  }
+
+  .theme-toggle-logo {
+    width: 16px;
+    height: 16px;
+  }
 }
