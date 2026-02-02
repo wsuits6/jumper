@@ -1,24 +1,44 @@
 :root {
-  /* Dark Theme Colors (Default) */
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-primary-light: #818cf8;
+  /* Web3/RWA Color Palette */
+  --color-primary: #00D4FF;
+  --color-primary-dark: #00A3CC;
+  --color-primary-light: #33DDFF;
+  --color-primary-glow: rgba(0, 212, 255, 0.5);
   
-  --color-secondary: #10b981;
-  --color-secondary-dark: #059669;
+  --color-secondary: #7B61FF;
+  --color-secondary-dark: #5E3FFF;
+  --color-secondary-light: #9D85FF;
   
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-surface-light: #334155;
+  --color-accent: #FF6B9D;
+  --color-accent-dark: #FF3D7F;
   
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #94a3b8;
+  --color-success: #00F5A0;
+  --color-success-dark: #00C97F;
+  --color-warning: #FFB800;
+  --color-error: #FF4757;
   
-  --color-border: #334155;
-  --color-error: #ef4444;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
+  /* Dark Theme (Default) */
+  --color-background: #0A0E27;
+  --color-background-alt: #0F1429;
+  --color-surface: #1A1F3A;
+  --color-surface-elevated: #252B4A;
+  --color-surface-glass: rgba(26, 31, 58, 0.6);
+  
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B4B9D6;
+  --color-text-muted: #6B7199;
+  --color-text-inverse: #0A0E27;
+  
+  --color-border: rgba(180, 185, 214, 0.1);
+  --color-border-hover: rgba(180, 185, 214, 0.2);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #00D4FF 0%, #7B61FF 100%);
+  --gradient-secondary: linear-gradient(135deg, #7B61FF 0%, #FF6B9D 100%);
+  --gradient-success: linear-gradient(135deg, #00F5A0 0%, #00D4FF 100%);
+  --gradient-mesh: radial-gradient(at 40% 20%, rgba(123, 97, 255, 0.3) 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, rgba(0, 212, 255, 0.2) 0px, transparent 50%),
+                   radial-gradient(at 0% 50%, rgba(255, 107, 157, 0.2) 0px, transparent 50%);
   
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -28,30 +48,33 @@
   --spacing-xl: 2rem;
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
   
   /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
   --radius-full: 9999px;
   
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4);
+  --shadow-glow-primary: 0 0 40px var(--color-primary-glow);
+  --shadow-glow-secondary: 0 0 40px rgba(123, 97, 255, 0.5);
   
   /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   /* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', monospace;
   
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -63,30 +86,66 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
   
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-modal: 1200;
+  --z-popover: 1300;
+  --z-tooltip: 1400;
+  
+  /* Animation Keyframes Variables */
+  --jump-distance: -20px;
+  --bounce-scale: 1.05;
 }
 
 /* Light Theme */
 [data-theme='light'] {
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-surface-light: #f1f5f9;
+  --color-background: #F5F7FA;
+  --color-background-alt: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F5F7FA;
+  --color-surface-glass: rgba(255, 255, 255, 0.8);
   
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #64748b;
+  --color-text-primary: #0A0E27;
+  --color-text-secondary: #4A5578;
+  --color-text-muted: #8B92B8;
+  --color-text-inverse: #FFFFFF;
   
-  --color-border: #e2e8f0;
+  --color-border: rgba(74, 85, 120, 0.15);
+  --color-border-hover: rgba(74, 85, 120, 0.25);
   
   /* Adjust shadows for light mode */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.18);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+  
+  --gradient-mesh: radial-gradient(at 40% 20%, rgba(123, 97, 255, 0.15) 0px, transparent 50%),
+                   radial-gradient(at 80% 0%, rgba(0, 212, 255, 0.1) 0px, transparent 50%),
+                   radial-gradient(at 0% 50%, rgba(255, 107, 157, 0.1) 0px, transparent 50%);
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+}
+
+/* Glow Effects */
+.glow-primary {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.glow-secondary {
+  box-shadow: var(--shadow-glow-secondary);
 }
