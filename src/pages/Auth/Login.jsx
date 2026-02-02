@@ -4,6 +4,8 @@ import Card from '../../components/ui/Card.jsx'
 import Input from '../../components/ui/Input.jsx'
 import Button from '../../components/ui/Button.jsx'
 import ThemeToggle from '../../components/ui/ThemeToggle.jsx'
+import HeroSection from '../../components/HeroSection/HeroSection.jsx'
+import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi'
 import './Auth.css'
 
 function Login() {
@@ -70,89 +72,117 @@ function Login() {
   }
 
   return (
-    <div className="auth-container">
+    <div className="auth-page">
       <div className="auth-theme-toggle">
         <ThemeToggle />
       </div>
 
       {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-content">
-          <div className="hero-logo">
-            <img src="/logo.png" alt="JumpCoin" className="hero-logo-image" />
-          </div>
-          <h1 className="hero-title gradient-text">JumpCoin</h1>
-          <p className="hero-subtitle">Jump to Earn. The Future of Move-to-Earn.</p>
-          <div className="hero-features">
-            <div className="hero-feature">
-              <span className="hero-feature-icon">🚀</span>
-              <span className="hero-feature-text">Instant Rewards</span>
-            </div>
-            <div className="hero-feature">
-              <span className="hero-feature-icon">💰</span>
-              <span className="hero-feature-text">Real Tokens</span>
-            </div>
-            <div className="hero-feature">
-              <span className="hero-feature-icon">🏆</span>
-              <span className="hero-feature-text">Compete & Win</span>
-            </div>
-          </div>
-        </div>
+      <div className="auth-hero">
+        <HeroSection />
       </div>
 
-      {/* Login Form */}
-      <div className="auth-content">
-        <div className="auth-header">
-          <h2 className="auth-title">Welcome Back</h2>
-          <p className="auth-description">Sign in to continue jumping and earning</p>
-        </div>
-
-        <Card padding="lg" className="auth-card">
-          <form onSubmit={handleSubmit} className="auth-form">
-            <Input
-              type="email"
-              name="email"
-              label="Email"
-              placeholder="you@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              error={errors.email}
-              required
-              disabled={isLoading}
-            />
-
-            <Input
-              type="password"
-              name="password"
-              label="Password"
-              placeholder="••••••••"
-              value={formData.password}
-              onChange={handleChange}
-              error={errors.password}
-              required
-              disabled={isLoading}
-            />
-
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              fullWidth
-              disabled={isLoading}
-            >
-              {isLoading ? 'Signing in...' : 'Sign In'}
-            </Button>
-          </form>
-
-          <div className="auth-footer">
-            <p className="auth-footer-text">
-              Don't have an account?{' '}
-              <Link to="/register" className="auth-link">
-                Sign up
-              </Link>
-            </p>
+      {/* Login Form Section */}
+      <div className="auth-form-section">
+        <div className="auth-form-container">
+          <div className="auth-form-header slide-up">
+            <h2 className="auth-form-title text-gradient">Welcome Back</h2>
+            <p className="auth-form-subtitle">Connect your wallet and start earning</p>
           </div>
-        </Card>
+
+          <Card glass padding="lg" className="auth-card bounce-enter">
+            <form onSubmit={handleSubmit} className="auth-form">
+              <Input
+                type="email"
+                name="email"
+                label="Email Address"
+                placeholder="satoshi@jumpcoin.io"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+                icon={<FiMail />}
+                size="lg"
+                glass
+                required
+                disabled={isLoading}
+              />
+
+              <Input
+                type="password"
+                name="password"
+                label="Password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password}
+                icon={<FiLock />}
+                size="lg"
+                glass
+                required
+                disabled={isLoading}
+              />
+
+              <div className="auth-form-options">
+                <label className="auth-checkbox">
+                  <input type="checkbox" />
+                  <span>Remember me</span>
+                </label>
+                <Link to="/forgot-password" className="auth-link-text">
+                  Forgot password?
+                </Link>
+              </div>
+
+              <Button
+                type="submit"
+                variant="primary"
+                size="lg"
+                fullWidth
+                disabled={isLoading}
+                jump
+                icon={<FiArrowRight />}
+                iconPosition="right"
+              >
+                {isLoading ? 'Connecting...' : 'Sign In'}
+              </Button>
+            </form>
+
+            <div className="auth-divider">
+              <span>or</span>
+            </div>
+
+            <div className="auth-social">
+              <Button variant="glass" size="lg" fullWidth>
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" className="auth-social-icon" />
+                Continue with Google
+              </Button>
+            </div>
+
+            <div className="auth-footer">
+              <p className="auth-footer-text">
+                Don't have an account?{' '}
+                <Link to="/register" className="auth-link">
+                  Sign up now
+                </Link>
+              </p>
+            </div>
+          </Card>
+
+          {/* Trust badges */}
+          <div className="auth-trust-badges slide-up">
+            <div className="trust-badge">
+              <div className="trust-badge-icon">🔒</div>
+              <span>Bank-level security</span>
+            </div>
+            <div className="trust-badge">
+              <div className="trust-badge-icon">⚡</div>
+              <span>Lightning fast</span>
+            </div>
+            <div className="trust-badge">
+              <div className="trust-badge-icon">🌍</div>
+              <span>Global access</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
