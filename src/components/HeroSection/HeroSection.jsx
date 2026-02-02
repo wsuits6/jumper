@@ -13,6 +13,40 @@ function HeroSection() {
       <div className="hero-orb hero-orb-2"></div>
       <div className="hero-orb hero-orb-3"></div>
 
+      {/* Dynamic Activity Images */}
+      <div className="hero-activity-images">
+        <img 
+          src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&h=600&fit=crop" 
+          alt="Running" 
+          className="activity-image activity-image-1 float"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&h=600&fit=crop" 
+          alt="Jogging" 
+          className="activity-image activity-image-2 float"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=600&fit=crop" 
+          alt="Jumping" 
+          className="activity-image activity-image-3 float"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&h=600&fit=crop" 
+          alt="Athletic Jump" 
+          className="activity-image activity-image-4 float"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400&h=600&fit=crop" 
+          alt="Outdoor Running" 
+          className="activity-image activity-image-5 float"
+        />
+        <img 
+          src="https://images.unsplash.com/photo-1485727749690-d091e8284ef3?w=400&h=600&fit=crop" 
+          alt="City Runner" 
+          className="activity-image activity-image-6 float"
+        />
+      </div>
+
       <div className="hero-content">
         {/* Logo with Animation */}
         <div className="hero-logo-container">
@@ -82,7 +116,7 @@ function HeroSection() {
         {/* Scroll Indicator */}
         <div className="hero-scroll-indicator">
           <div className="hero-scroll-arrow"></div>
-          <span className="hero-scroll-text">Scroll to start earning</span>
+          <span className="hero-scroll-text">Scroll to explore</span>
         </div>
       </div>
     </div>
