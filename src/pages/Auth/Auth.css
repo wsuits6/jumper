@@ -293,3 +293,75 @@
     font-size: var(--font-size-2xl);
   }
 }
+
+
+
+/* Add to existing Auth.css */
+
+/* Terms checkbox */
+.auth-terms {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: calc(var(--spacing-md) * -1);
+}
+
+.auth-terms .auth-checkbox {
+  align-items: flex-start;
+}
+
+.auth-terms .auth-checkbox span {
+  line-height: 1.5;
+}
+
+.auth-terms-error {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  margin-left: calc(18px + var(--spacing-sm));
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Benefits */
+.auth-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-3xl);
+  padding: var(--spacing-xl);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-base);
+}
+
+.benefit-item:hover {
+  color: var(--color-text-primary);
+  transform: translateX(4px);
+}
+
+.benefit-icon {
+  font-size: var(--font-size-lg);
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+/* Responsive additions */
+@media (max-width: 768px) {
+  .auth-benefits {
+    padding: var(--spacing-lg);
+  }
+
+  .auth-terms .auth-checkbox span {
+    font-size: var(--font-size-xs);
+  }
+}
