@@ -4,8 +4,7 @@ import Card from '../../components/ui/Card.jsx'
 import Input from '../../components/ui/Input.jsx'
 import Button from '../../components/ui/Button.jsx'
 import ThemeToggle from '../../components/ui/ThemeToggle.jsx'
-import HeroSection from '../../components/HeroSection/HeroSection.jsx'
-import { FiMail, FiLock, FiUser, FiArrowRight, FiCheckCircle } from 'react-icons/fi'
+import { FiMail, FiLock, FiUser, FiArrowRight, FiCheckCircle, FiArrowLeft } from 'react-icons/fi'
 import './Auth.css'
 
 function Register() {
@@ -92,18 +91,25 @@ function Register() {
   }
 
   return (
-    <div className="auth-page">
+    <div className="auth-page-standalone">
       <div className="auth-theme-toggle">
         <ThemeToggle />
       </div>
 
-      {/* Hero Section */}
-      <div className="auth-hero">
-        <HeroSection />
+      {/* Back button */}
+      <div className="auth-back-button">
+        <Button 
+          variant="glass" 
+          size="sm"
+          onClick={() => navigate('/')}
+          icon={<FiArrowLeft />}
+        >
+          Back to Home
+        </Button>
       </div>
 
       {/* Register Form Section */}
-      <div className="auth-form-section">
+      <div className="auth-form-section-centered">
         <div className="auth-form-container">
           <div className="auth-form-header slide-up">
             <h2 className="auth-form-title text-gradient">Create Account</h2>
