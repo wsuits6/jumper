@@ -13,7 +13,7 @@ function ThemeToggle() {
       <div className="theme-toggle-track">
         <div className={`theme-toggle-thumb ${theme}`}>
           <img 
-            src={theme === 'dark' ? '/logo-white.png' : '/logo-black.png'} 
+            src={theme === 'dark' ? '/logo.png' : '/logo.png'} 
             alt="JumpCoin Logo" 
             className="theme-toggle-logo"
           />
